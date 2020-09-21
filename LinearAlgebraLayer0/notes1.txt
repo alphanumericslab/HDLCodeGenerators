@@ -1,0 +1,26 @@
++Spartan6 vs specific device (dsp48)
++Parameter change from .xst
++استفاده از register balancing
++check "Latch" mode state transition condition for CL(VL) and RL
+
+print("wire eOR = ((inSeries==0) & inReady) | (inSeries!=0);", file=of)
+
+حذف iSeries<=0 در حالت توان دو
+
+کامل کردن caseها
+
+rewrite iSeries,... as case or rotary
+
+در نظر گرفتن دو حالت برای مواقع لچ کردن در صورت استفاده از rotary
+
+ایده بردن comparator قبل از رجیستر
+
+انجام Instane گرفتن با . برای مقدار ندادن به آنهایی که استفاده نمیشن
+
+توضیحات جمع کننده 3تایی در متن
+
+کامل کردن حالت NR?
+
+Matrix add OTI uses adder IR (NOT OT2S OR)
+
+-Testbench using xflow

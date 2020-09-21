@@ -1,0 +1,25 @@
+-"output earlyOutReady; reg earlyOutReady = 0; (causes problem if is in a branch of generate block, else no problem)"
+	problem in simulation
+		check _Use_Registered_earlyOutReady_If_Available from DotProduct_SoE_V4_5-Copy1, e.g. DotProduct_9_S1E_HRx9_C1_A0
+		any other occurences?
+		better to change also for when not in a generate block branch
+	simulate error:
+	ERROR:HDLCompiler:482 - "DotProduct_9_S1E_HRx9_C1_A0.v" Line 98: Illegal duplicate name created during elaboration, multiple declarations created for 'earlyOutReady'
+	synthesize warning: Redeclaration of ansi port ... is not allowed
+
+- functions: has testbench or not? if yes, generate or not?
+
+- simulation return value:
+	return code must be 0 (means simulated, not Succeeded or Failed)
+	open output file and copy result from it.
+
+- random verilog parameters? (possibly more than 1 combination for each project)
+
+- flush report file after each project
+
+* add other needed info to project report file
+
+add 2 mode traverse for (original) parameters (start_end, directly_listed)
+
+*Simulate subprocess call:
+	why fuse needs shell=True (using both multiple args or single string)? may lead to lock or not?

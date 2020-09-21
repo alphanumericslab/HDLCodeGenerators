@@ -1,0 +1,7 @@
+Succeeded
+Simulation completed without error at 49.0 ns
+
+Parameters' values:
+IN_WIDTH : fixed to 11
+INPUT_REG_DEPTH = 1
+MULT_PIPE_DEPTH = 0

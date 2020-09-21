@@ -1,0 +1,40 @@
+MatrixMatrixMultiply_SI
+
+MatrixMatrixMultiply_SoE
+
+MatrixVectorMultiply_SoE
+
+DotProduct_SoE:
+	if NMult==1:
+		RegisteredMultiplier (v)
+	elif MAMCS==NMult:
+		DotProduct_Systolic
+	elif MAMCS==1:
+		DotProduct_noHR_M
+	else:
+		DotProduct_noHR_C
+
+DotProduct_Systolic:
+	RegisteredMultiplier (v)
+    MultiplyAdd (v)
+
+DotProduct_noHR_M:
+	RegisteredMultiplier (v)
+	for AS in AdderSizes(set):
+        RegisteredNto1Adder
+
+RegisteredNto1Adder:
+	#nothing!
+
+DotProduct_noHR_C:
+	DotProduct_Systolic
+	#if NonMaxSizeComponentSize==1:
+    #    RegisteredMultiplier (v)
+    elif NonMaxSizeComponentSize>1:
+        DotProduct_Systolic (might be called for second time)
+	//else: NonMaxSizeComponentSize==0
+	AdderTree_ASm
+
+AdderTree_ASm:
+	for AS in AdderSizes(set):
+        RegisteredNto1Adder

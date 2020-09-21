@@ -1,0 +1,9 @@
+نتخاب n حالت به صورت رندم از بین حالت های ممکن و فقط سنتز کردن آنها
+تغییر ورودی های testbench بر اساس زمان، یا بر اساس feedback (سیگنالهای کنترلی و خبری) از خود ماژول؟
+در آوردن نمودار کلاک و حجم تعدادی از منابع مصرفی
+چک مقادیر خروجی در خود testbench و چاپ نتیجه در فایل
+
+what is ISE compile order?
+
+Hybrid of NR and register
+E.g systolic2nr,reg,systolic2nr,reg

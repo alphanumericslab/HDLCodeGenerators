@@ -1,0 +1,42 @@
+a = 0,
+a = 6, b=0
+
+parameter						=> 
+parameter [3:0]					=> [3:0]
+parameter [(2*IN_WIDTH)+3:0] 	=> [(2*IN_WIDTH)+3:0]
+parameter [((2*IN_WIDTH)+3):0] 	=> [((2*IN_WIDTH)+3):0]
+
+parameter a = 0, b = 0
+parameter a=0, parameter b = 0,
+
+input a, 
+input signed a,
+
+output a, b
+output signed a, b,
+output reg a=0, b=1,
+output reg signed a=0
+
+type: parameter, input, output
+reg: T, F
+signed: T, F
+length: string, null
+initialization: string, null
+
+
+////////////////////////////////////////////////////////////////////
+parameter a {_=_ 0} _,_
+
+parameter a {_=_ 0} _)
+
+input {signed} {[1:0]}
+
+output {-reg} {+signed} _[(2*IN_WIDTH)+3:0]_
+
+output {-reg} {+signed} _[((2*IN_WIDTH)+3):0]_ 
+
+E0 _,_ E1 {_=_ 0} _,_
+
+E0 _,_ E1 {_=_ 0} _)
+
+//names can't start with number

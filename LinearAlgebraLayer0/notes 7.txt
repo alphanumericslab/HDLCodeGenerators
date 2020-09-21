@@ -1,0 +1,30 @@
+MatrixVectorMultiply_SI_IL_VL:
+	have duplicate registers for storing vector data
+	check similar modules for same thing,
+	and try to store data once
+	what is the trade off? more complex multiplexers? check MR
+
+in addition SI modes:
+	can change NOEPS again after HRR is selected, or can select NOEPS from start
+	(to have different output styles)
+	
+increment outSeries with ourReady (not earlyOutReady) (and other similar regs)
+
+لازم به ذکر است در پیادهسازی فعلی جعبه ابزار، در ماژولهایی که ابتدا HRF مشخص شود، مقدار NOEPS به منظور بیشترین بهینگی در استفاده از سخت افزار به صورت خودکار برابر مقدار مینیمم ⌈N⁄HRF⌉ تعیین میشود؛ اگرچه که انتخاب سایر مقادیر نیز با تغییر کوچکی در کد جعبهابزار امکانپذیر خواهد بود.
+
+how to calculate number of occupied slices?
+
+add post-synthesis-data (present-flag and data) to db?
+
+Check syr time_units always ns (and MHz) or not?
+
+
+---------------------
+*add wire sizes to MatrixAdd_SI_testbench
+
+*don't copy (all) results to memory, a flag for (count / run):
+save and read random verilog parameter modes to/from a list (to be able to repeat the exact run again)
+
+*print current project number (in console and report, db?)
+
+print number of results (Fuse succeeded/failed, ...)

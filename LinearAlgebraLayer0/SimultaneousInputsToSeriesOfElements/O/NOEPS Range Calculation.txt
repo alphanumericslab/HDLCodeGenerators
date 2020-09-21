@@ -1,0 +1,21 @@
+NOEPSMin = math.ceil(N/HRR)
+NOEPSMax = math.ceil(N/(HRR-1))-1
+NOEPSMM = (NOEPSMin!=NOEPSMax)
+	
+#>=NOEPSMin, <=NOEPSMax
+if NOEPSMM:
+    NOEPS = input('Enter No Of Elements Per Series (>={}, <={}, empty for {}): '.format(NOEPSMin, NOEPSMax, NOEPSMin))
+	
+if NOEPSMM:
+    if not NOEPS:
+        NMult = NOEPSMin
+    else:
+        NOEPS = int(NOEPS)
+        if NOEPS<NOEPSMin:
+            NMult = NOEPSMin
+        elif NOEPS>NOEPSMax:
+            NMult = NOEPSMax
+        else:
+            NMult = NOEPS
+else:
+    NMult = NOEPSMin

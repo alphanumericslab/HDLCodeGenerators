@@ -1,0 +1,24 @@
+تاثیر registered generator روی حجم منابع مصرفی
+
+
+نوشتن نتیجه گیری و کارهای آینده
+اشاره به  registered generator و دو نوع سنتز (سرعت، منابع)
+مقیاس پذیری کجا با نمودار نشان داده شده؟
+
+نمودار حجم منابع (lut و ff) (برای dsp48 برابر، نابرابر، صفر)
+کلاک بر حسب hrr
+
+مینیمم مربعات یا مینیمم قدر مطلق خطا؟
+
+تاثیر m و q و latchها و ... روی حجم منابع (خصوصا lut)
+
+ارائه فرمول برای حجم منابع؟
+
+need to install scipy for sklearn
+
+#faght baraye IL, CL, RL = 0 barrasi kon, inha az nazare reg baraye har vector ba  N-NOEPS, PC*N, M*N motenaseban?
+#SIM_OR ba NOEPS motenasebe?
+
+nemoodar manabe (khosoosan reg) bar hasbe PR*PC*NOEPS
+
+nemoodare clk bar hasbe PR*PC*NOEPS (scalability)

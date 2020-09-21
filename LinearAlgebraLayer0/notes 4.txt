@@ -1,0 +1,19 @@
+-correct OTI modules to SI(simultaneous input) modules:
+	correct HRR calculation
+	correct names
+	correct Enable_SIM_Output_Registers, move to end
+	correct SI instances names
+	update version, move old to ./O
+	
+- check newInSeriesStartI initialization and reset value
+
+-revert changed parameters (if exist) to old values
+	- check assignment of Enable_Input_Regs (of Registered{}to1Adder_(N)IR) in AdderTree or similar modules
+	
+-Possible duplicate check using modules (for Generator)
+
+Complete case default values (using x or 0 ?)
+
+XST return values meaning
+
+*extra empty line in generator? bug in notebook?

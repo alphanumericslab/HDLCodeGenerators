@@ -1,0 +1,27 @@
+for sqlalchemy: pip install mysqlclient
+
+pass:  cmsql
+
+create database LATool;
+
+use LATool;
+
+show tables;
+
+select * from tableName;
+
+describe tableName;
+
+select 1 from tableName;
+
+select col1, col2 from features;
+
+select count(*) from tableName;
+
+select result_simulate from matrixmatrixmultiply_si_20 group by result_simulate;
+
+dump:
+mysqldump -u root -p LATool > mamad.sql
+mysql -u root -p LATool < mamad.sql
+add mysql home to ENV and home/bin to path:
+	C:\Program Files\MySQL\MySQL Server 5.5\bin

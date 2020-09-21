@@ -1,0 +1,15 @@
+parameter a {_=_ 0} _,_
+
+parameter a {_=_ 0} _)
+
+input {signed} {[1:0]}
+
+output {-reg} {+signed} _[(2*IN_WIDTH)+3:0]_
+
+output {-reg} {+signed} _[((2*IN_WIDTH)+3):0]_ 
+
+E0 _,_ E1 {_=_ 0} _,_
+
+E0 _,_ E1 {_=_ 0} _)
+
+//names can't start with number

@@ -1,0 +1,11 @@
+import subprocess
+#resultS = subprocess.call(['D:\Thesis_Results\MatrixMatrixMultiply_5_10_5_2PR_2PC_OTINR_HRx3_S4E_C3_A2_IL_CL_RL\Synthesize_10_1_1.bat'], cwd="D:\Thesis_Results\MatrixMatrixMultiply_5_10_5_2PR_2PC_OTINR_HRx3_S4E_C3_A2_IL_CL_RL")
+resultS = subprocess.call(['xst', '-intstyle silent -ifn MatrixMatrixMultiply_5_10_5_2PR_2PC_OTINR_HRx3_S4E_C3_A2_IL_CL_RL_REGISTERED_10_1_1.xst -ofn MatrixMatrixMultiply_5_10_5_2PR_2PC_OTINR_HRx3_S4E_C3_A2_IL_CL_RL_REGISTERED_10_1_1.syr'], cwd="D:\Thesis_Results\MatrixMatrixMultiply_5_10_5_2PR_2PC_OTINR_HRx3_S4E_C3_A2_IL_CL_RL")
+print(resultS)
+# result2 = subprocess.call(['D:\Thesis_Results\MatrixMatrixMultiply_5_10_5_2PR_2PC_OTINR_HRx3_S4E_C3_A2_IL_CL_RL\TMPR_10_1_1.bat'], cwd="D:\Thesis_Results\MatrixMatrixMultiply_5_10_5_2PR_2PC_OTINR_HRx3_S4E_C3_A2_IL_CL_RL")
+# print(result2)
+
+
+ipyrhon:
+!
+%
