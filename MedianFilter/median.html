@@ -1,0 +1,1221 @@
+<style type="text/css">
+<!--
+.style3 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.style4 {font-family: Arial, Helvetica, sans-serif}
+-->
+</style>
+<title>High-speed hardware implementation of fixed and runtime variable window length 1-D median filters</title><table width="1495" border="1" align="center" bgcolor="#FFFF99">
+  <tr>
+    <th width="1485" scope="col"><h1 class="style3">High-speed hardware   implementation of fixed and runtime variable window length 1-D median   filters</h1>
+    <p align="left" class="style4">Suplementary results regarding this paper can be found below. Please click <a href="http://home.cse.shirazu.ac.ir/~sameni/MEDIAN/medianfilterNikahdBehnamSameni.rar">here</a> to download    the Verilog source codes for regenerating the results of the paper.    The article and its source codes can be cited as follows:</p>
+    <p align="left" class="style3">Nikahd, Eesa, Payman Behnam, and Reza Sameni. &quot;High-speed hardware   implementation of fixed and runtime variable window length 1-D median   filters.&quot; <em>IEEE Transactions on Circuits and Systems II: Express Briefs</em> 63, no. 5 (2016): 478-482.</p></th>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p><span style="text-decoration: underline; color: #000000;"><strong>Supplementary Results</strong></span></p>
+<p><span style="color: #000000;">Nonlinear digital filters play an important role in&nbsp;digital signal processing applications. In this paper, a novel&nbsp;architecture is proposed for the hardware implementation of&nbsp;fixed and run-time variable window length one-dimensional (1-D)&nbsp;median filters. In the proposed architecture, the maximum working&nbsp;clock frequency is almost independent of the median filter&nbsp;window length, while the hardware complexity is proportional&nbsp;to the number of samples in the window. This feature enables&nbsp;the construction of filters with relatively large window lengths&nbsp;with negligible reduction in the maximum clock frequency; while&nbsp;in previous architectures the maximum clock frequency drops&nbsp;</span><span style="color: #000000;">significantly as the window length is increased. The benchmark&nbsp;results show the efficiency of the proposed architecture in&nbsp;comparison with state-of-the-art techniques.</span></p>
+<p><span style="color: #000000;">The following additional analyses have been carried-out during the revision and are&nbsp;brought here for reviewers' information. However, due to the lack of space only a summary&nbsp;of these results has been added to the paper.</span><br /><span style="color: #000000;"><strong>1- Detailed post-synthesis power results for the variable length case</strong></span><br /><span style="color: #000000;">The detailed dynamic and static power consumption ratios are as follows. The power result&nbsp;are extracted from Design Compiler Tool by setting true the&nbsp;"power_preserve_rtl_hier_names" attribute. In Table IV of the paper, only the total power&nbsp;(static plus dynamic) have been added to save space.</span></p>
+<p style="text-align: center;"><span style="color: #000000;">MAXIMUM THROUGHPUT, AREA AND POWER RESULTS FOR VARIABLE WINDOW&nbsp;LENGTH ON 45NM CMOS ASIC</span></p>
+<div align="center">
+	<table style="margin-left: -39.8pt; border-collapse: collapse; border: none; width: 597px; height: 276px;" border="1" cellspacing="0" cellpadding="0">
+		<tbody>
+			<tr>
+				<td style="width: 34.35pt; border: 1pt solid windowtext; padding: 0in; text-align: center;" rowspan="3" valign="top" width="46">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">Max L</span>					</p>				</td>
+				<td style="width: 92.15pt; border-style: solid solid solid none; border-top-color: #000000; border-right-color: #000000; border-bottom-color: #000000; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in; text-align: center;" colspan="2" valign="top" width="123">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">Max Freq.(MHZ)</span>					</p>				</td>
+				<td style="width: 99.25pt; border-style: solid solid solid none; border-top-color: #000000; border-right-color: #000000; border-bottom-color: #000000; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in; text-align: center;" colspan="2" valign="top" width="132">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">Area (um2)</span>					</p>				</td>
+				<td style="width: 177.65pt; border-style: solid solid solid none; border-top-color: #000000; border-right-color: #000000; border-bottom-color: #000000; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in; text-align: center;" colspan="4" valign="top" width="237">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">Power (micro Watt)</span>					</p>				</td>
+			</tr>
+			<tr style="height: 9.45pt;">
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; height: 9.45pt; text-align: center;" rowspan="2" width="66">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">8-bit</span>					</p>				</td>
+				<td style="width: 42.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; height: 9.45pt; text-align: center;" rowspan="2" width="57">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">16-bit</span>					</p>				</td>
+				<td style="width: 49.6pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; height: 9.45pt; text-align: center;" rowspan="2" width="66">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">8-bit</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; height: 9.45pt; text-align: center;" rowspan="2" width="66">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">16-bit</span>					</p>				</td>
+				<td style="width: 92.6pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; height: 9.45pt; text-align: center;" colspan="2" valign="top" width="123">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">8-bit</span>					</p>				</td>
+				<td style="width: 85.05pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; height: 9.45pt; text-align: center;" colspan="2" valign="top" width="113">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">16-bit</span>					</p>				</td>
+			</tr>
+			<tr style="height: 8.85pt;">
+				<td style="width: 42.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; height: 8.85pt; text-align: center;" valign="top" width="57">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">Static</span>					</p>				</td>
+				<td style="width: 50.1pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; height: 8.85pt; text-align: center;" valign="top" width="67">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">Dyn.</span>					</p>				</td>
+				<td style="width: 35.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; height: 8.85pt; text-align: center;" valign="top" width="47">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">Static</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; height: 8.85pt; text-align: center;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">Dyn.</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="width: 34.35pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in; text-align: center;" valign="top" width="46">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">5</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1324.2</span>					</p>				</td>
+				<td style="width: 42.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="57">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1324.2</span>					</p>				</td>
+				<td style="width: 49.6pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="bottom" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1029.1</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="bottom" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1873.2</span>					</p>				</td>
+				<td style="width: 42.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="57">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">9.2</span>					</p>				</td>
+				<td style="width: 50.1pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="67">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">70.2</span>					</p>				</td>
+				<td style="width: 35.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="47">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">17.9</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">131.1</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="width: 34.35pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in; text-align: center;" valign="top" width="46">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">8</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1309.7</span>					</p>				</td>
+				<td style="width: 42.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="57">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1309.7</span>					</p>				</td>
+				<td style="width: 49.6pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="bottom" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1625.4</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="bottom" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">3086.4</span>					</p>				</td>
+				<td style="width: 42.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="57">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">15.7</span>					</p>				</td>
+				<td style="width: 50.1pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="67">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">113.1</span>					</p>				</td>
+				<td style="width: 35.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="47">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">29.5</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">212.3</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="width: 34.35pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in; text-align: center;" valign="top" width="46">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">20</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1261.6</span>					</p>				</td>
+				<td style="width: 42.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="57">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1255.2</span>					</p>				</td>
+				<td style="width: 49.6pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="bottom" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">3946.3</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="bottom" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">7891.5</span>					</p>				</td>
+				<td style="width: 42.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="57">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">43.7</span>					</p>				</td>
+				<td style="width: 50.1pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="67">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">287.2</span>					</p>				</td>
+				<td style="width: 35.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="47">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">83.3</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">530.8</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="width: 34.35pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in; text-align: center;" valign="top" width="46">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">51</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1219.7</span>					</p>				</td>
+				<td style="width: 42.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="57">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1210.8</span>					</p>				</td>
+				<td style="width: 49.6pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="bottom" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">9614.1</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="bottom" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">18113.6</span>					</p>				</td>
+				<td style="width: 42.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="57">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">104.2</span>					</p>				</td>
+				<td style="width: 50.1pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="67">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">692</span>					</p>				</td>
+				<td style="width: 35.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="47">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">188.8</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1298.3</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="width: 34.35pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in; text-align: center;" valign="top" width="46">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">100</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1157.8</span>					</p>				</td>
+				<td style="width: 42.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="57">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1148.1</span>					</p>				</td>
+				<td style="width: 49.6pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="bottom" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">19783.1</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="bottom" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">38397.9</span>					</p>				</td>
+				<td style="width: 42.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="57">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">213.4</span>					</p>				</td>
+				<td style="width: 50.1pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="67">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">1410.8</span>					</p>				</td>
+				<td style="width: 35.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="47">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">385.2</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">2641.7</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="width: 34.35pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in; text-align: center;" valign="top" width="46">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">201</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1089.2</span>					</p>				</td>
+				<td style="width: 42.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="57">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1075.2</span>					</p>				</td>
+				<td style="width: 49.6pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="bottom" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">39411.6</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="bottom" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">76469.9</span>					</p>				</td>
+				<td style="width: 42.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="57">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">435.5</span>					</p>				</td>
+				<td style="width: 50.1pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="67">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">2852.2</span>					</p>				</td>
+				<td style="width: 35.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="47">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">792.7</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">537.2</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="width: 34.35pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in; text-align: center;" valign="top" width="46">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">301</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">998.9</span>					</p>				</td>
+				<td style="width: 42.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="57">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">974.2</span>					</p>				</td>
+				<td style="width: 49.6pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="bottom" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">59099.2</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="bottom" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">110625.4</span>					</p>				</td>
+				<td style="width: 42.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="57">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">685.3</span>					</p>				</td>
+				<td style="width: 50.1pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="67">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">4308</span>					</p>				</td>
+				<td style="width: 35.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="47">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1235.6</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">8079</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="width: 34.35pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in; text-align: center;" valign="top" width="46">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">600</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">915.8</span>					</p>				</td>
+				<td style="width: 42.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="57">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">880.1</span>					</p>				</td>
+				<td style="width: 49.6pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="bottom" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">118286.2</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="bottom" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">211306.2</span>					</p>				</td>
+				<td style="width: 42.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="57">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">1372.8</span>					</p>				</td>
+				<td style="width: 50.1pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="67">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">8667.6</span>					</p>				</td>
+				<td style="width: 35.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="47">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">2467</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">16261.7</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="width: 34.35pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in; text-align: center;" valign="top" width="46">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1001</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">877.1</span>					</p>				</td>
+				<td style="width: 42.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="57">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">828.4</span>					</p>				</td>
+				<td style="width: 49.6pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="bottom" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">233693.2</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="bottom" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">403147.1</span>					</p>				</td>
+				<td style="width: 42.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="57">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">2298.2</span>					</p>				</td>
+				<td style="width: 50.1pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="67">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">14382.9</span>					</p>				</td>
+				<td style="width: 35.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="47">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">4101.2</span>					</p>				</td>
+				<td style="width: 49.65pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in; text-align: center;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">26101.5</span>					</p>				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p><span style="color: #000000;"><strong>2- FPGA-based implementation</strong></span><br /><span style="color: #000000;">For FPGA implementation, the Quartus II 12.1 from Altera was used as the synthesis tool&nbsp;and an Altera Cyclone IVE FPGA with the following specifications was used as the target&nbsp;device: chip number EP4CE115F29I8L, 114480 logic cells, 3981312 memory bits, 1.0v&nbsp;core voltage. Tables I to V show the results for fixed window length in terms of maximum&nbsp;clock frequency and logic cells with 8-bit and 16-bit word lengths, respectively. As&nbsp;expected the overall trend of the maximum frequencies and area are the same as the&nbsp;ASIC results. Table III repeat these results for variable length filter.</span></p>
+<p style="margin: 0in 56.9pt 10pt 49.65pt; text-align: center;" align="center"><span style="line-height: 115%; color: #000000;">Table I. Maximum Frequency And Area Results For Fixed Window Length And 8-Bit Word Length On Altera Cyclone IVE FPGA</span></p>
+<div align="center">
+	<table style="border-collapse: collapse; border: none;" border="1" cellspacing="0" cellpadding="0">
+		<tbody>
+			<tr>
+				<td style="border: 1pt solid windowtext; padding: 0in 5.4pt;" rowspan="2" valign="top">
+					<p style="margin: 0in -7.65pt 0.0001pt 0in;"><span style="color: #000000;">L</span>					</p>				</td>
+				<td style="border-style: solid solid solid none; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in 5.4pt;" colspan="3" valign="top">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">Max Freq.(MHZ)</span>					</p>				</td>
+				<td style="border-style: solid solid solid none; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in 5.4pt;" colspan="3" valign="top">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">Area(um2)</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">Moshnyaga[4]</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">Chen[10]</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt; text-align: justify;"><span style="color: #000000;">Our arch.</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">Moshnyaga[4]</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">Chen[10]</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt; text-align: justify;"><span style="color: #000000;">Our arch.</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">5</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">144.7</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">151.4</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">157.6</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">210</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">201</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">197</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">8</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">127.8</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">141.3</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">145.8</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">354</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">345</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">337</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">20</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">91.8</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">110.7</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">140.5</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1101</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">919</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">865</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">51</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">55.5</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">73.2</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">129.6</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">2689</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">2483</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">2187</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">100</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">36.1</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">44.3</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">127.3</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">5198</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">4498</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">4389</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">201</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">22.2</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">24.1</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">120.5</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">10229</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">9811</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">8789</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">301</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">15.8</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">16.7</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">116.8</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">16921</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">15623</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">13191</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">600</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">7.6</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">8.1</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">110.2</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">34989</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">33042</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">26393</span>					</p>				</td>
+			</tr>
+			<tr style="height: 2.8pt;">
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt; height: 2.8pt;" valign="top">
+					<p style="margin: 0in -7.65pt 0.0001pt 0in;"><span style="color: #000000;">1001</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt; height: 2.8pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">4.2</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt; height: 2.8pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">4.9</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt; height: 2.8pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">107.1</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt; height: 2.8pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">57289</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt; height: 2.8pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">55375</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt; height: 2.8pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">43995</span>					</p>				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p style="margin: 0in 56.9pt 10pt 49.65pt; text-align: center;" align="center">&nbsp;</p>
+<p style="margin: 0in 56.9pt 10pt 49.65pt; text-align: center;" align="center"><span style="line-height: 115%; color: #000000;">Table II. Maximum Frequency And Area Results For Fixed Window Length And 16-Bit Word Length On Altera Cyclone IVE FPGA</span></p>
+<div align="center">
+	<table style="border-collapse: collapse; border: none;" border="1" cellspacing="0" cellpadding="0">
+		<tbody>
+			<tr>
+				<td style="border: 1pt solid windowtext; padding: 0in 5.4pt;" rowspan="2" valign="top">
+					<p style="margin: 0in -7.65pt 0.0001pt 0in;"><span style="color: #000000;">L</span>					</p>				</td>
+				<td style="border-style: solid solid solid none; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in 5.4pt;" colspan="3" valign="top">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">Max Freq.(MHZ)</span>					</p>				</td>
+				<td style="border-style: solid solid solid none; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in 5.4pt;" colspan="3" valign="top">
+					<p style="margin-bottom: 0.0001pt; text-align: center;" align="center"><span style="color: #000000;">Area(um2)</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">Moshnyaga[4]</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">Chen[10]</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt; text-align: justify;"><span style="color: #000000;">Our arch.</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">Moshnyaga[4]</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">Chen[10]</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt; text-align: justify;"><span style="color: #000000;">Our arch.</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">5</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">132.9</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">135.8</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">142.2</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">332</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">291</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">319</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">8</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">123.8</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">128.6</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">137.8</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">575</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">476</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">557</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">20</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">88.8</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">99.1</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">121.4</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1402</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1102</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1381</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">51</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">52.9</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">72.9</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">119.7</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">3481</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">2907</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">3464</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">100</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">33.5</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">43.1</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">116.2</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">6929</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">6107</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">6812</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">201</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">20.9</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">22.9</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">111.6</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">15498</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">13028</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">13865</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">301</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">13.3</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">15.8</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">109.7</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">23987</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">20452</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">20811</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">600</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">6.9</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">7.4</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">104.4</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">43987</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">40701</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="bottom">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">41233</span>					</p>				</td>
+			</tr>
+			<tr style="height: 2.8pt;">
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt; height: 2.8pt;" valign="top">
+					<p style="margin: 0in -7.65pt 0.0001pt 0in;"><span style="color: #000000;">1001</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt; height: 2.8pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">3.9</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt; height: 2.8pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">4.2</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt; height: 2.8pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">100.38</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt; height: 2.8pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">72567</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt; height: 2.8pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">68272</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt; height: 2.8pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">69282</span>					</p>				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p style="text-align: center;" align="center"><span style="line-height: 115%; color: #000000;">Table III. Maximum Frequency And Area FPGA Results For Variable Window Size, 8-Bit And 16-Bit Word Length</span></p>
+<div align="center">
+	<table style="border-collapse: collapse; border: none; width: 314px;" border="1" cellspacing="0" cellpadding="0">
+		<tbody>
+			<tr>
+				<td style="width: 51.25pt; border: 1pt solid windowtext; padding: 0in;" rowspan="2" valign="top" width="68">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">Window-size</span>					</p>				</td>
+				<td style="width: 85.5pt; border-style: solid solid solid none; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in;" colspan="2" valign="top" width="114">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">Max Freq.(MHZ)</span>					</p>				</td>
+				<td style="width: 99pt; border-style: solid solid solid none; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in;" colspan="2" valign="top" width="132">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">Area (Logic Cell)</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="width: 0.5in; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="top" width="48">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">8-bit</span>					</p>				</td>
+				<td style="width: 49.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">16-bit</span>					</p>				</td>
+				<td style="width: 45pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="top" width="60">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">8-bit</span>					</p>				</td>
+				<td style="width: 0.75in; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="top" width="72">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">16-bit</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="width: 51.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in;" valign="top" width="68">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">5</span>					</p>				</td>
+				<td style="width: 0.5in; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="top" width="48">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">133.07</span>					</p>				</td>
+				<td style="width: 49.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">116.5</span>					</p>				</td>
+				<td style="width: 45pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="bottom" width="60">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">258</span>					</p>				</td>
+				<td style="width: 0.75in; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="bottom" width="72">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">491</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="width: 51.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in;" valign="top" width="68">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">8</span>					</p>				</td>
+				<td style="width: 0.5in; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="top" width="48">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">125.1</span>					</p>				</td>
+				<td style="width: 49.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">114.0</span>					</p>				</td>
+				<td style="width: 45pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="bottom" width="60">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">410</span>					</p>				</td>
+				<td style="width: 0.75in; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="bottom" width="72">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">785</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="width: 51.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in;" valign="top" width="68">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">20</span>					</p>				</td>
+				<td style="width: 0.5in; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="top" width="48">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">109.5</span>					</p>				</td>
+				<td style="width: 49.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">102.8</span>					</p>				</td>
+				<td style="width: 45pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="bottom" width="60">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1050</span>					</p>				</td>
+				<td style="width: 0.75in; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="bottom" width="72">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">2014</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="width: 51.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in;" valign="top" width="68">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">51</span>					</p>				</td>
+				<td style="width: 0.5in; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="top" width="48">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">99.38</span>					</p>				</td>
+				<td style="width: 49.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">86.6</span>					</p>				</td>
+				<td style="width: 45pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="bottom" width="60">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">2694</span>					</p>				</td>
+				<td style="width: 0.75in; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="bottom" width="72">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">5086</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="width: 51.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in;" valign="top" width="68">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">100</span>					</p>				</td>
+				<td style="width: 0.5in; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="top" width="48">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">89.04</span>					</p>				</td>
+				<td style="width: 49.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">78.6</span>					</p>				</td>
+				<td style="width: 45pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="bottom" width="60">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">5386</span>					</p>				</td>
+				<td style="width: 0.75in; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="bottom" width="72">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">10179</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="width: 51.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in;" valign="top" width="68">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">201</span>					</p>				</td>
+				<td style="width: 0.5in; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="top" width="48">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">79.27</span>					</p>				</td>
+				<td style="width: 49.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">69.9</span>					</p>				</td>
+				<td style="width: 45pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="bottom" width="60">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">10763</span>					</p>				</td>
+				<td style="width: 0.75in; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="bottom" width="72">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">20371</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="width: 51.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in;" valign="top" width="68">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">301</span>					</p>				</td>
+				<td style="width: 0.5in; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="top" width="48">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">74.6</span>					</p>				</td>
+				<td style="width: 49.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">66.5</span>					</p>				</td>
+				<td style="width: 45pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="bottom" width="60">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">16159</span>					</p>				</td>
+				<td style="width: 0.75in; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="bottom" width="72">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">30554</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="width: 51.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in;" valign="top" width="68">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">600</span>					</p>				</td>
+				<td style="width: 0.5in; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="top" width="48">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">65.5</span>					</p>				</td>
+				<td style="width: 49.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">56.6</span>					</p>				</td>
+				<td style="width: 45pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="bottom" width="60">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">32389</span>					</p>				</td>
+				<td style="width: 0.75in; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="bottom" width="72">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">61332</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="width: 51.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in;" valign="top" width="68">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1001</span>					</p>				</td>
+				<td style="width: 0.5in; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="top" width="48">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">60.6</span>					</p>				</td>
+				<td style="width: 49.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="top" width="66">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">52.2</span>					</p>				</td>
+				<td style="width: 45pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="bottom" width="60">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">53957</span>					</p>				</td>
+				<td style="width: 0.75in; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in;" valign="bottom" width="72">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">102563</span>					</p>				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p style="text-align: center;" align="center"><span style="line-height: 115%; color: #000000;">Table IV. Hardware Utilization For Fixed Window Length And 8-bit Word Length On FPGA</span></p>
+<div align="center">
+	<table style="border-collapse: collapse; border: none;" border="1" cellspacing="0" cellpadding="0">
+		<tbody>
+			<tr>
+				<td style="border: 1pt solid windowtext; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">Win. Len.</span>					</p>				</td>
+				<td style="border-style: solid solid solid none; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">Total logic elements (%)</span>					</p>				</td>
+				<td style="border-style: solid solid solid none; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">Dedicated logic registers (%)</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">5</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">8</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">20</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">51</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">2</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">100</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">4</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">201</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">8</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">3</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">301</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">12</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">4</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">600</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">23</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">8</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1001</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">38</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">14</span>					</p>				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p style="text-align: center;" align="center"><span style="line-height: 115%; color: #000000;">Table V. Hardware Utilization For Fixed Window Length And 16-bit Word Length On FPGA</span></p>
+<div align="center">
+	<table style="border-collapse: collapse; border: none;" border="1" cellspacing="0" cellpadding="0">
+		<tbody>
+			<tr>
+				<td style="border: 1pt solid windowtext; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">Win. Len.</span>					</p>				</td>
+				<td style="border-style: solid solid solid none; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">Total logic elements (%)</span>					</p>				</td>
+				<td style="border-style: solid solid solid none; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">Dedicated logic registers (%)</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">5</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">8</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">20</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">51</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">3</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">100</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">6</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">3</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">201</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">12</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">6</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">301</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">18</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">8</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">600</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">36</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">17</span>					</p>				</td>
+			</tr>
+			<tr>
+				<td style="border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1001</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">61</span>					</p>				</td>
+				<td style="border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top">
+					<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">28</span>					</p>				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p style="margin: 0in 56.9pt 10pt 49.65pt; text-align: center;" align="center"><span style="line-height: 115%;">&nbsp;</span></p>
+<p><span style="color: #000000;"><strong>3- Detailed hardware utilization</strong></span><br /><span style="color: #000000;">In Comparison with the latest work, Chen[10], our ASIC results show that in the proposed&nbsp;architecture for different sizes, the combinational area occupies about 42%-44% of the&nbsp;total area, non-combinational area takes up 32% and the net interconnections area&nbsp;occupies about 24% -26% of the total area. These results for the Chen [10] are 47%-49%,&nbsp;24%-26% and 25%-27% respectively. These results are reflected in Tables IV, and V.&nbsp;Considering only the component areas (as noted by one of the reviewers), we have: For&nbsp;different word and window lengths, the average resource utilization ratio of the proposed&nbsp;architecture is as follows: the combinational area occupies about 57% and the noncombinational&nbsp;area takes 43% (27% of which is due to the register chain), of the total&nbsp;component areas. For Chen's architecture, these ratios are 66% and 34%, respectively.</span></p>
+<p style="text-align: center;" align="center"><span style="line-height: 115%; color: #000000;">Table IV. Hardware Utilization For Fixed Window Length And 8-bit Word Length On ASIC</span></p>
+<table style="margin-left: auto; border-collapse: collapse; border: none; width: 780px; margin-right: auto; height: 260px;" border="1" cellspacing="0" cellpadding="0">
+	<tbody>
+		<tr>
+			<td style="width: 37.9pt; border: 1pt solid windowtext; padding: 0in 5.4pt;" valign="top" width="51">
+				<p style="margin-bottom: 0.0001pt; text-align: center;"><span style="color: #000000;">Win. Len.</span>				</p>			</td>
+			<td style="width: 67.5pt; border-style: solid solid solid none; border-top-color: #000000; border-right-color: #000000; border-bottom-color: #000000; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in 5.4pt;" valign="top" width="90"><span style="color: #000000;">&nbsp;Comb Area/ &nbsp;Total Area<span style="line-height: 115%; font-family: Calibri, sans-serif;"></span></span>			</td>
+			<td style="width: 85.5pt; border-style: solid solid solid none; border-top-color: #000000; border-right-color: #000000; border-bottom-color: #000000; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in 5.4pt;" valign="top" width="114"><span style="color: #000000;">&nbsp;Non&nbsp;Comb Area/ &nbsp;Total Area</span>			</td>
+			<td style="width: 58.5pt; border-style: solid solid solid none; border-top-color: #000000; border-right-color: #000000; border-bottom-color: #000000; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in 5.4pt;" valign="top" width="78"><span style="color: #000000;">&nbsp;Net&nbsp;Area/ &nbsp;Total Area</span>			</td>
+			<td style="width: 67.5pt; border-style: solid solid solid none; border-top-color: #000000; border-right-color: #000000; border-bottom-color: #000000; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in 5.4pt;" valign="top" width="90">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">&nbsp;Comb Area/ &nbsp;Total Area&nbsp;[10]</span>				</p>			</td>
+			<td style="width: 76.5pt; border-style: solid solid solid none; border-top-color: #000000; border-right-color: #000000; border-bottom-color: #000000; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in 5.4pt;" valign="top" width="102">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">&nbsp;Non&nbsp;Comb Area/ &nbsp;Total Area&nbsp;[10]</span>				</p>			</td>
+			<td style="width: 63pt; border-style: solid solid solid none; border-top-color: #000000; border-right-color: #000000; border-bottom-color: #000000; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in 5.4pt;" valign="top" width="84"><span style="color: #000000;">&nbsp;Net&nbsp;Area/ &nbsp;Total Area[10]</span>			</td>
+		</tr>
+		<tr>
+			<td style="width: 37.9pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top" width="51">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">5</span>				</p>			</td>
+			<td style="width: 67.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="90">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">44%</span>				</p>			</td>
+			<td style="width: 85.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="114">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">32%</span>				</p>			</td>
+			<td style="width: 58.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="78">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">24%</span>				</p>			</td>
+			<td style="width: 67.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="90">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">49%</span>				</p>			</td>
+			<td style="width: 76.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="102">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">26%</span>				</p>			</td>
+			<td style="width: 63pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="84">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">25%</span>				</p>			</td>
+		</tr>
+		<tr>
+			<td style="width: 37.9pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top" width="51">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">8</span>				</p>			</td>
+			<td style="width: 67.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="90">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">44%</span>				</p>			</td>
+			<td style="width: 85.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="114">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">32%</span>				</p>			</td>
+			<td style="width: 58.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="78">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">24%</span>				</p>			</td>
+			<td style="width: 67.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="90">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">49%</span>				</p>			</td>
+			<td style="width: 76.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="102">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">26%</span>				</p>			</td>
+			<td style="width: 63pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="84">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">25%</span>				</p>			</td>
+		</tr>
+		<tr>
+			<td style="width: 37.9pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top" width="51">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">25</span>				</p>			</td>
+			<td style="width: 67.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="90">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">44%</span>				</p>			</td>
+			<td style="width: 85.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="114">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">32%</span>				</p>			</td>
+			<td style="width: 58.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="78">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">24%</span>				</p>			</td>
+			<td style="width: 67.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="90">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">49%</span>				</p>			</td>
+			<td style="width: 76.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="102">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">26%</span>				</p>			</td>
+			<td style="width: 63pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="84">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">25%</span>				</p>			</td>
+		</tr>
+		<tr>
+			<td style="width: 37.9pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top" width="51">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">51</span>				</p>			</td>
+			<td style="width: 67.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="90">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">44%</span>				</p>			</td>
+			<td style="width: 85.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="114">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">32%</span>				</p>			</td>
+			<td style="width: 58.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="78">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">24%</span>				</p>			</td>
+			<td style="width: 67.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="90">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">49%</span>				</p>			</td>
+			<td style="width: 76.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="102">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">26%</span>				</p>			</td>
+			<td style="width: 63pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="84">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">25%</span>				</p>			</td>
+		</tr>
+		<tr>
+			<td style="width: 37.9pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top" width="51">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">100</span>				</p>			</td>
+			<td style="width: 67.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="90">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">44%</span>				</p>			</td>
+			<td style="width: 85.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="114">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">32%</span>				</p>			</td>
+			<td style="width: 58.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="78">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">24%</span>				</p>			</td>
+			<td style="width: 67.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="90">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">49%</span>				</p>			</td>
+			<td style="width: 76.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="102">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">26%</span>				</p>			</td>
+			<td style="width: 63pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="84">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">25%</span>				</p>			</td>
+		</tr>
+		<tr>
+			<td style="width: 37.9pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top" width="51">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">201</span>				</p>			</td>
+			<td style="width: 67.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="90">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">44%</span>				</p>			</td>
+			<td style="width: 85.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="114">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">32%</span>				</p>			</td>
+			<td style="width: 58.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="78">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">24%</span>				</p>			</td>
+			<td style="width: 67.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="90">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">51%</span>				</p>			</td>
+			<td style="width: 76.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="102">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">24%</span>				</p>			</td>
+			<td style="width: 63pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="84">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">25%</span>				</p>			</td>
+		</tr>
+		<tr>
+			<td style="width: 37.9pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top" width="51">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">301</span>				</p>			</td>
+			<td style="width: 67.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="90">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">44%</span>				</p>			</td>
+			<td style="width: 85.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="114">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">32%</span>				</p>			</td>
+			<td style="width: 58.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="78">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">24%</span>				</p>			</td>
+			<td style="width: 67.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="90">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">51%</span>				</p>			</td>
+			<td style="width: 76.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="102">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">24%</span>				</p>			</td>
+			<td style="width: 63pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="84">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">25%</span>				</p>			</td>
+		</tr>
+		<tr>
+			<td style="width: 37.9pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top" width="51">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">600</span>				</p>			</td>
+			<td style="width: 67.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="90">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">44%</span>				</p>			</td>
+			<td style="width: 85.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="114">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">32%</span>				</p>			</td>
+			<td style="width: 58.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="78">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">24%</span>				</p>			</td>
+			<td style="width: 67.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="90">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">51%</span>				</p>			</td>
+			<td style="width: 76.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="102">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">24%</span>				</p>			</td>
+			<td style="width: 63pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="84">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">25%</span>				</p>			</td>
+		</tr>
+		<tr>
+			<td style="width: 37.9pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top" width="51">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1001</span>				</p>			</td>
+			<td style="width: 67.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="90">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">44%</span>				</p>			</td>
+			<td style="width: 85.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="114">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">32%</span>				</p>			</td>
+			<td style="width: 58.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="78">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">24%</span>				</p>			</td>
+			<td style="width: 67.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="90">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">51%</span>				</p>			</td>
+			<td style="width: 76.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="102">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">24%</span>				</p>			</td>
+			<td style="width: 63pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="84">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">25%</span>				</p>			</td>
+		</tr>
+	</tbody>
+</table>
+<p style="text-align: center;" align="center"><span style="line-height: 115%; color: #000000;">Table V. Hardware Utilization For Fixed Window Length And 16-bit Word Length On ASIC</span></p>
+<table style="margin-left: auto; border-collapse: collapse; border: none; margin-right: auto; height: 198px; width: 786px;" border="1" cellspacing="0" cellpadding="0">
+	<tbody>
+		<tr>
+			<td style="width: 42.55pt; border: 1pt solid windowtext; padding: 0in 5.4pt;" valign="top" width="57">
+				<p style="margin-bottom: 0.0001pt; text-align: center;"><span style="color: #000000;">Win. Len.</span>				</p>			</td>
+			<td style="width: 52.4pt; border-style: solid solid solid none; border-top-color: #000000; border-right-color: #000000; border-bottom-color: #000000; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in 5.4pt;" valign="top" width="70"><span style="color: #000000;">&nbsp;Comb Area/ &nbsp;Total Area</span>			</td>
+			<td style="width: 83.7pt; border-style: solid solid solid none; border-top-color: #000000; border-right-color: #000000; border-bottom-color: #000000; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in 5.4pt;" valign="top" width="112"><span style="color: #000000;">&nbsp;Non&nbsp;Comb Area/ &nbsp;Total Area</span>			</td>
+			<td style="width: 62.4pt; border-style: solid solid solid none; border-top-color: #000000; border-right-color: #000000; border-bottom-color: #000000; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83"><span style="color: #000000;">&nbsp;Net&nbsp;Area/ &nbsp;Total Area</span>			</td>
+			<td style="width: 62.5pt; border-style: solid solid solid none; border-top-color: #000000; border-right-color: #000000; border-bottom-color: #000000; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">&nbsp;Comb Area/ &nbsp;Total Area[10]</span>				</p>			</td>
+			<td style="width: 83.7pt; border-style: solid solid solid none; border-top-color: #000000; border-right-color: #000000; border-bottom-color: #000000; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in 5.4pt;" valign="top" width="112">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">&nbsp;Non&nbsp;Comb Area/ &nbsp;Total Area&nbsp;[10]</span>				</p>			</td>
+			<td style="width: 62.4pt; border-style: solid solid solid none; border-top-color: #000000; border-right-color: #000000; border-bottom-color: #000000; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83"><span style="color: #000000;">&nbsp;Net&nbsp;Area/ &nbsp; Total Area[10]</span>			</td>
+		</tr>
+		<tr>
+			<td style="width: 42.55pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top" width="57">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">5</span>				</p>			</td>
+			<td style="width: 52.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="70">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">42%</span>				</p>			</td>
+			<td style="width: 83.7pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="112">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">32%</span>				</p>			</td>
+			<td style="width: 62.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">26%</span>				</p>			</td>
+			<td style="width: 62.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">47%</span>				</p>			</td>
+			<td style="width: 83.7pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="112">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">26%</span>				</p>			</td>
+			<td style="width: 62.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">27%</span>				</p>			</td>
+		</tr>
+		<tr>
+			<td style="width: 42.55pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top" width="57">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">8</span>				</p>			</td>
+			<td style="width: 52.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="70">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">42%</span>				</p>			</td>
+			<td style="width: 83.7pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="112">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">32%</span>				</p>			</td>
+			<td style="width: 62.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">26%</span>				</p>			</td>
+			<td style="width: 62.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">47%</span>				</p>			</td>
+			<td style="width: 83.7pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="112">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">26%</span>				</p>			</td>
+			<td style="width: 62.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">27%</span>				</p>			</td>
+		</tr>
+		<tr>
+			<td style="width: 42.55pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top" width="57">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">25</span>				</p>			</td>
+			<td style="width: 52.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="70">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">42%</span>				</p>			</td>
+			<td style="width: 83.7pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="112">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">32%</span>				</p>			</td>
+			<td style="width: 62.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">26%</span>				</p>			</td>
+			<td style="width: 62.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">47%</span>				</p>			</td>
+			<td style="width: 83.7pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="112">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">26%</span>				</p>			</td>
+			<td style="width: 62.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">27%</span>				</p>			</td>
+		</tr>
+		<tr>
+			<td style="width: 42.55pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top" width="57">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">51</span>				</p>			</td>
+			<td style="width: 52.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="70">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">42%</span>				</p>			</td>
+			<td style="width: 83.7pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="112">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">32%</span>				</p>			</td>
+			<td style="width: 62.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">26%</span>				</p>			</td>
+			<td style="width: 62.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">47%</span>				</p>			</td>
+			<td style="width: 83.7pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="112">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">26%</span>				</p>			</td>
+			<td style="width: 62.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">27%</span>				</p>			</td>
+		</tr>
+		<tr>
+			<td style="width: 42.55pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top" width="57">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">100</span>				</p>			</td>
+			<td style="width: 52.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="70">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">42%</span>				</p>			</td>
+			<td style="width: 83.7pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="112">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">32%</span>				</p>			</td>
+			<td style="width: 62.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">26%</span>				</p>			</td>
+			<td style="width: 62.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">47%</span>				</p>			</td>
+			<td style="width: 83.7pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="112">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">26%</span>				</p>			</td>
+			<td style="width: 62.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">27%</span>				</p>			</td>
+		</tr>
+		<tr>
+			<td style="width: 42.55pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top" width="57">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">201</span>				</p>			</td>
+			<td style="width: 52.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="70">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">42%</span>				</p>			</td>
+			<td style="width: 83.7pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="112">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">32%</span>				</p>			</td>
+			<td style="width: 62.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">26%</span>				</p>			</td>
+			<td style="width: 62.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">48%</span>				</p>			</td>
+			<td style="width: 83.7pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="112">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">25%</span>				</p>			</td>
+			<td style="width: 62.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">27%</span>				</p>			</td>
+		</tr>
+		<tr>
+			<td style="width: 42.55pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top" width="57">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">301</span>				</p>			</td>
+			<td style="width: 52.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="70">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">42%</span>				</p>			</td>
+			<td style="width: 83.7pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="112">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">32%</span>				</p>			</td>
+			<td style="width: 62.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">26%</span>				</p>			</td>
+			<td style="width: 62.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">48%</span>				</p>			</td>
+			<td style="width: 83.7pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="112">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">25%</span>				</p>			</td>
+			<td style="width: 62.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">27%</span>				</p>			</td>
+		</tr>
+		<tr>
+			<td style="width: 42.55pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top" width="57">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">600</span>				</p>			</td>
+			<td style="width: 52.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="70">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">42%</span>				</p>			</td>
+			<td style="width: 83.7pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="112">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">32%</span>				</p>			</td>
+			<td style="width: 62.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">26%</span>				</p>			</td>
+			<td style="width: 62.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">48%</span>				</p>			</td>
+			<td style="width: 83.7pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="112">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">25%</span>				</p>			</td>
+			<td style="width: 62.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">27%</span>				</p>			</td>
+		</tr>
+		<tr>
+			<td style="width: 42.55pt; border-style: none solid solid; border-right-color: #000000; border-bottom-color: #000000; border-left-color: #000000; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0in 5.4pt;" valign="top" width="57">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">1001</span>				</p>			</td>
+			<td style="width: 52.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="70">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">42%</span>				</p>			</td>
+			<td style="width: 83.7pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="112">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">32%</span>				</p>			</td>
+			<td style="width: 62.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">26%</span>				</p>			</td>
+			<td style="width: 62.5pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">48%</span>				</p>			</td>
+			<td style="width: 83.7pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="112">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">25%</span>				</p>			</td>
+			<td style="width: 62.4pt; border-style: none solid solid none; border-bottom-color: #000000; border-bottom-width: 1pt; border-right-color: #000000; border-right-width: 1pt; padding: 0in 5.4pt;" valign="top" width="83">
+				<p style="margin-bottom: 0.0001pt;"><span style="color: #000000;">27%</span>				</p>			</td>
+		</tr>
+	</tbody>
+</table>
+<p><span style="color: #000000;"><strong>4- Hardware sharing for high system clock and low data throughputs</strong></span><br /><span style="color: #000000;">The memory elements of our architecture cannot be shared and based on the results of&nbsp;the proposed architecture approximately 32% of total area belongs to non-combinational&nbsp;elements. In the proposed architecture, two comparators and a controller in each cell are&nbsp;combinational resources. These elements can be shared. To do so, we can make use of&nbsp;one comparator (instead of two) in each cell; but in this case, we need two clock cycles to&nbsp;generate the output.&nbsp;By this way, in the first clock, the oldest element in the register chain is compared to thecontent of Ri of all array cells in parallel using a comparator in each cell. The old cell in the&nbsp;array cells is specified and the right side elements of this cell i are shifted to the left. In the&nbsp;second clock, the new input sample is compared with the content of all array cells inparallel and the right position for the new sample is located. This position and its right-side&nbsp;elements are shifted right and the new sample is located in this place. Therefore, we can&nbsp;save the area utilization by sharing the comparators. However, the latency is increased to&nbsp;two clock cycles (decreasing the actual working frequency). We can also share the control&nbsp;unit by using a multiplexer, but since its design is simple, it seems that it cannot save the&nbsp;occupied area significantly. Additionally, by adding some multiplexers and slight&nbsp;modification in the control unit, one can also automatically select one of two proposed&nbsp;designs easily. We leave this extension for future research.</span></p>
