@@ -1,0 +1,10 @@
+C:\Users\Pezhman\Documents\Visual Studio 2008\Projects\t01\t01\bin\Debug\t01.exe
+C:\Users\Pezhman\Documents\Visual Studio 2008\Projects\t01\t01\bin\Debug\t01.pdb
+C:\Users\Pezhman\Documents\Visual Studio 2008\Projects\t01\t01\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Pezhman\Documents\Visual Studio 2008\Projects\t01\t01\obj\Debug\t01.Form1.resources
+C:\Users\Pezhman\Documents\Visual Studio 2008\Projects\t01\t01\obj\Debug\t01.Properties.Resources.resources
+C:\Users\Pezhman\Documents\Visual Studio 2008\Projects\t01\t01\obj\Debug\t01.csproj.GenerateResource.Cache
+C:\Users\Pezhman\Documents\Visual Studio 2008\Projects\t01\t01\obj\Debug\t01.exe
+C:\Users\Pezhman\Documents\Visual Studio 2008\Projects\t01\t01\obj\Debug\t01.pdb
+C:\Users\Pezhman\Desktop\Project C#\t01\obj\Debug\t01.exe
+C:\Users\Pezhman\Desktop\Project C#\t01\obj\Debug\t01.pdb
